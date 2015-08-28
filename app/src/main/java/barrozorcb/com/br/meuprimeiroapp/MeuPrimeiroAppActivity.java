@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class MeuPrimeiroAppActivity extends AppCompatActivity {
@@ -17,17 +19,36 @@ public class MeuPrimeiroAppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal);
 
-//teste
-
-        final EditText editText = (EditText) findViewById(R.id.campo);
+        String editText = String.valueOf(findViewById(R.id.campo));
 
         Button botaoEnviar = (Button) findViewById(R.id.enviar);
+        
+        
+        
+        String[] nomes = {};
+
+
+        for (String nome:nomes) {
+
+            nome = editText;
+        }
+        
+        int layout = android.R.layout.simple_list_item_1;
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, layout, nomes);
+        
+        ListView lista = (ListView) findViewById(R.id.lista);
+
+        
 
         botaoEnviar.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(MeuPrimeiroAppActivity.this, (CharSequence) editText, Toast.LENGTH_LONG).show();
+
+
+                
+                Toast.makeText(MeuPrimeiroAppActivity.this, "Nome Adicionado", Toast.LENGTH_LONG).show();
             }
         });
     }
