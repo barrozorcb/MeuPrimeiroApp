@@ -17,7 +17,7 @@ public class MeuPrimeiroAppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal);
 
-
+//teste
 
         final EditText editText = (EditText) findViewById(R.id.campo);
 
