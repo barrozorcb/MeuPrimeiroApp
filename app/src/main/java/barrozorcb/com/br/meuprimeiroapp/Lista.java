@@ -2,55 +2,45 @@ package barrozorcb.com.br.meuprimeiroapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MeuPrimeiroAppActivity extends AppCompatActivity {
+public class Lista extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.principal);
+        setContentView(R.layout.listaNomes);
 
-        String editText = String.valueOf(findViewById(R.id.campo));
+        final String[] nomes = {"Ana", "Jose", "Felipe"};
 
-        Button botaoEnviar = (Button) findViewById(R.id.enviar);
-        
-        
-        
-        String[] nomes = {};
-
-
-        for (String nome:nomes) {
-
-            nome = editText;
-        }
-        
         int layout = android.R.layout.simple_list_item_1;
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, layout, nomes);
-        
+
         ListView lista = (ListView) findViewById(R.id.lista);
 
-        
+        lista.setAdapter(adapter);
 
-        botaoEnviar.setOnClickListener(new View.OnClickListener(){
-
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+                Toast.makeText(Lista.this, "Clique na posição " + position, Toast.LENGTH_SHORT).show();
+            }
 
+        });
 
-                
-                Toast.makeText(MeuPrimeiroAppActivity.this, "Nome Adicionado", Toast.LENGTH_LONG).show();
+        lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapter, View view, int position, long id) {
+                Toast.makeText(Lista.this, "Clique longo em " + adapter.getItemAtPosition(position), Toast.LENGTH_LONG).show();
+
+                return true;
             }
         });
+
     }
 
     /*@Override
